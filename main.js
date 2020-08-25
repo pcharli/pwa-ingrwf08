@@ -1,4 +1,10 @@
 //ajax
+
+document.querySelector('.delCache').addEventListener("click", e => {
+    e.preventDefault()
+    caches.delete('design-cache')
+})
+
 axios.get("https://api.punkapi.com/v2/beers")
 .then (response => {
     let ul = document.querySelector(".beers")
@@ -10,8 +16,6 @@ axios.get("https://api.punkapi.com/v2/beers")
 })
 
 if('serviceWorker' in navigator) {
-    
-    caches.delete('design-cache')
 
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('service.js')

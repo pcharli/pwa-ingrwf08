@@ -1,4 +1,5 @@
-const version = '0.0.7'
+const version = 12
+const oldVersion = version -1
 
 self.addEventListener('install', event => {
     console.log('Install' + version)
@@ -7,6 +8,10 @@ self.addEventListener('install', event => {
 
 self.addEventListener('activate', event => {
     console.log('activate')
+    event.waitUntil(
+        caches.delete('design-cache-' + oldVersion)
+        caches.delete('api-cache-' + oldVersion)
+    )
     return self.clients.claim();
 })
 

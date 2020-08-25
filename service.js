@@ -1,4 +1,4 @@
-const version = '0.0.3'
+const version = '0.0.5'
 
 self.addEventListener('install', event => {
     console.log('Install' + version)
@@ -22,9 +22,6 @@ if(workbox) {
             url: "index.html"
         },
         {
-            url: "style.css"
-        },
-        {
             url: "images/logo.png"
         },
         {
@@ -34,7 +31,28 @@ if(workbox) {
             url: "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css"
         }
     ])
-}
+
+    workbox.routing.registerRoute(
+        /(.*)\.(?:png|gif|jpg|jpeg|css)$/,
+        new workbox.strategies.CacheFirst({
+            cacheName: "design-cache",
+            /*plugins :[
+                new workbox.cacheableResponse.CacheableResponsePlugin({
+                    maxEntries : 50,
+                    maxAgeSeconds: 30 * 24 * 60 * 60 //30 days
+                })
+            ]*/
+        })
+    )
+
+    // network priority
+    workbox.routing.registerRoute(
+        "https://api.punkapi.com/v2/beers",
+        new workbox.strategies.NetworkFirst({
+            cacheName: "api-cache"
+        })
+    )
+}//endif
 else {
     console.log("alert", "error Workbox")
 }

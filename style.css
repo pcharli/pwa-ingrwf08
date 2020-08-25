@@ -2,7 +2,7 @@ body {
     background-color: yellow;
 }
 .installer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     background: green;
     height: 35px;

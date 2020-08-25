@@ -1,3 +1,12 @@
 body {
     background-color: yellow;
 }
+.installer {
+    position: absolute;
+    bottom: 0;
+    background: red;
+    height: 35px;
+    width: 100%;
+    line-height: 35px;
+    display: none;
+}

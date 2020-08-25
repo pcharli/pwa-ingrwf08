@@ -11,7 +11,8 @@ axios.get("https://api.punkapi.com/v2/beers")
 
 if('serviceWorker' in navigator) {
     
-        caches.delete('cache-design')
+    caches.delete('design-cache')
+
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('service.js')
         .then(function(reg) {

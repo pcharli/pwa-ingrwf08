@@ -10,6 +10,8 @@ axios.get("https://api.punkapi.com/v2/beers")
 })
 
 if('serviceWorker' in navigator) {
+    
+        caches.delete('cache-design')
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('service.js')
         .then(function(reg) {
@@ -19,6 +21,8 @@ if('serviceWorker' in navigator) {
             console.log('alert', 'Erreur de serviceWorker with ' + error)
         })
     })
+
+    
 }
 else {
     console.log('alert', 'Votre navigateur n\'est pas compatible avec nos services')

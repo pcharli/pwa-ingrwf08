@@ -9,7 +9,7 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
     console.log('activate')
     event.waitUntil(
-        caches.delete('design-cache-' + oldVersion)
+        caches.delete('design-cache-' + oldVersion),
         caches.delete('api-cache-' + oldVersion)
     )
     return self.clients.claim();

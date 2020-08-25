@@ -32,6 +32,7 @@ if(workbox) {
         }
     ])
 
+    // cache priority
     workbox.routing.registerRoute(
         /(.*)\.(?:png|gif|jpg|jpeg|css)$/,
         new workbox.strategies.CacheFirst({
@@ -52,6 +53,8 @@ if(workbox) {
             cacheName: "api-cache"
         })
     )
+
+
 }//endif
 else {
     console.log("alert", "error Workbox")

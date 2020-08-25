@@ -21,6 +21,7 @@ if('serviceWorker' in navigator) {
         navigator.serviceWorker.register('service.js')
         .then(function(reg) {
             console.log('notify', 'Service Worker is starting '+ reg)
+            
         })
         .catch( error => {
             console.log('alert', 'Erreur de serviceWorker with ' + error)

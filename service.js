@@ -1,4 +1,4 @@
-const version = '0.0.5'
+const version = '0.0.7'
 
 self.addEventListener('install', event => {
     console.log('Install' + version)
@@ -36,7 +36,7 @@ if(workbox) {
     workbox.routing.registerRoute(
         /(.*)\.(?:png|gif|jpg|jpeg|css)$/,
         new workbox.strategies.CacheFirst({
-            cacheName: "design-cache",
+            cacheName: "design-cache-"+version,
             /*plugins :[
                 new workbox.cacheableResponse.CacheableResponsePlugin({
                     maxEntries : 50,
@@ -50,7 +50,7 @@ if(workbox) {
     workbox.routing.registerRoute(
         "https://api.punkapi.com/v2/beers",
         new workbox.strategies.NetworkFirst({
-            cacheName: "api-cache"
+            cacheName: "api-cache-"+version
         })
     )
 
